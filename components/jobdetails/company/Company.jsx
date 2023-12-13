@@ -1,14 +1,42 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text, Image } from 'react-native';
 
-import styles from './company.style'
-
-const Company = () => {
+import styles from './company.style';
+import { checkImageURL } from '../../../utils';
+import { icons } from '../../../constants';
+const Company = ({ companyLogo, companyName, jobTitle, location }) => {
   return (
-    <View>
-      <Text>Company</Text>
+    <View style={styles.container}>
+      <View style={styles.logoBox}>
+        <Image
+          source={{
+            uri: checkImageURL(companyLogo)
+              ? companyLogo
+              : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg',
+          }}
+          style={styles.logoImage}
+          resizeMode="contain"
+        />
+      </View>
+      <View style={styles.jobTitleBox}>
+        <Text style={styles.jobName} numberOfLines={1}>
+          {jobTitle}
+        </Text>
+        {/* <Text style={styles.jobType}>{job.job_employment_type}</Text> */}
+      </View>
+      <View style={styles.companyInfoBox}>
+        <Text style={styles.companyName}>{companyName}/</Text>
+        <View style={styles.locationBox}>
+          <Image
+            source={icons.location}
+            resizeMode="contain"
+            style={styles.locationImage}
+          />
+          <Text style={styles.locationName}>{location}</Text>
+        </View>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default Company
+export default Company;
