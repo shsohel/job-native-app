@@ -2,8 +2,12 @@
 
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import { Drawer } from 'expo-router/drawer';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { COLORS, icons, images } from '../constants';
+import CustomDrawer from '../components/common/drawer';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,7 +26,14 @@ const Layout = () => {
 
   if (!fontLoaded) return null;
 
-  return <Stack onLayout={onLayoutRootView} />;
+  return (
+    <Drawer
+      onLayout={onLayoutRootView}
+      drawerContent={(props) => {
+        return <CustomDrawer {...props} />;
+      }}
+    />
+  );
 };
 
 export default Layout;

@@ -8,6 +8,20 @@
       "expo-router"
     ],
     "name": "job-native-app",
-    "slug": "job-native-app"
+    "slug": "job-native-app",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "3a0ccf3c-a856-483b-8827-4b124f4e01d5"
+      }
+    },
+    "android": {
+      "package": "com.shsohel.jobnativeapp"
+    },
+    "ios": {
+      "bundleIdentifier": "com.shsohel.jobnativeapp"
+    }
   }
 }

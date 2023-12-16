@@ -1,20 +1,20 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
   Image,
   TouchableOpacity,
   View,
-} from "react-native";
-import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { Text, SafeAreaView } from "react-native";
-import axios from "axios";
+} from 'react-native';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Text, SafeAreaView } from 'react-native';
+import axios from 'axios';
 
-import { ScreenHeaderBtn, NearbyJobCard } from "../../components";
-import { COLORS, icons, SIZES } from "../../constants";
-import styles from "../../styles/search";
+import { ScreenHeaderBtn, NearbyJobCard } from '../../components';
+import { COLORS, icons, SIZES } from '../../constants';
+import styles from '../../styles/search';
 
 const JobSearch = () => {
   const params = useLocalSearchParams();
@@ -31,12 +31,11 @@ const JobSearch = () => {
 
     try {
       const options = {
-        method: "GET",
+        method: 'GET',
         url: `https://jsearch.p.rapidapi.com/search`,
         headers: {
-          "X-RapidAPI-Key":
-            "c22f5a92cemshfaa063268016694p15772ejsnff5a8505a4f4",
-          "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+          'X-RapidAPI-Key': process.env.EXPO_PUBLIC_API_KEY_B,
+          'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
         },
         params: {
           query: params.id,
@@ -55,10 +54,10 @@ const JobSearch = () => {
   };
 
   const handlePagination = (direction) => {
-    if (direction === "left" && page > 1) {
+    if (direction === 'left' && page > 1) {
       setPage(page - 1);
       handleSearch();
-    } else if (direction === "right") {
+    } else if (direction === 'right') {
       setPage(page + 1);
       handleSearch();
     }
@@ -81,7 +80,7 @@ const JobSearch = () => {
               handlePress={() => router.back()}
             />
           ),
-          headerTitle: "",
+          headerTitle: '',
         }}
       />
 
@@ -114,7 +113,7 @@ const JobSearch = () => {
           <View style={styles.footerContainer}>
             <TouchableOpacity
               style={styles.paginationButton}
-              onPress={() => handlePagination("left")}
+              onPress={() => handlePagination('left')}
             >
               <Image
                 source={icons.chevronLeft}
@@ -127,7 +126,7 @@ const JobSearch = () => {
             </View>
             <TouchableOpacity
               style={styles.paginationButton}
-              onPress={() => handlePagination("right")}
+              onPress={() => handlePagination('right')}
             >
               <Image
                 source={icons.chevronRight}
