@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
   drawerItemsContainer: {
     borderStyle: 'solid',
     borderTopWidth: 0.2,
-    borderBottomWidth: 0.2,
   },
   drawerItemContainer: {
     marginVertical: SIZES.small,
@@ -51,6 +50,12 @@ const styles = StyleSheet.create({
     marginLeft: SIZES.small,
     padding: 4,
   }),
+
+  footerIcon: {
+    width: 22,
+    height: 22,
+    borderRadius: 100,
+  },
 });
 
 export default styles;

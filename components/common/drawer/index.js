@@ -6,8 +6,9 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
-import { COLORS, images } from '../../../constants';
+import { COLORS, icons, images } from '../../../constants';
 import styles from './drawer.style';
 import { usePathname, useRouter } from 'expo-router';
 
@@ -67,7 +68,32 @@ const CustomDrawer = () => {
         </View>
       </ScrollView>
       <View>
-        <Text>Footer</Text>
+        <TouchableOpacity
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: COLORS.lightWhite,
+            borderTopWidth: 0.5,
+            borderColor: COLORS.gray,
+            paddingTop: 2,
+            columnGap: 5,
+          }}
+          onPress={() => {
+            Linking.openURL('https://prosohel.com');
+          }}
+        >
+          {/* <Image
+            source={icons.copyRight}
+            resizeMode="contain"
+            style={styles.footerIcon}
+          /> */}
+
+          <Text style={{ color: COLORS.gray }}>Programmer Sohel</Text>
+          <Text style={{ color: COLORS.gray }}>|</Text>
+          <Text style={{ color: COLORS.gray }}>prosohel.com</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
