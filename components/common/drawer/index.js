@@ -8,21 +8,33 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import { COLORS, icons, images } from '../../../constants';
-import styles from './drawer.style';
-import { usePathname, useRouter } from 'expo-router';
-
+import { COLORS, FONT, SIZES, icons, images } from "../../../constants";
+import styles from "./drawer.style";
+import { usePathname, useRouter } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
 const navItems = [
   {
     id: 1,
-    label: 'Home',
-    link: '/',
+    label: "Home",
+    link: "/",
     icon: null,
   },
   {
     id: 2,
-    label: 'All Jobs',
-    link: '/jobs',
+    label: "All Jobs",
+    link: "/jobs",
+    icon: null,
+  },
+  {
+    id: 3,
+    label: "Job Questions",
+    link: "/job-questions",
+    icon: null,
+  },
+  {
+    id: 4,
+    label: "Job Exam",
+    link: "/job-exams",
     icon: null,
   },
 ];
@@ -67,21 +79,31 @@ const CustomDrawer = () => {
           ))}
         </View>
       </ScrollView>
+
+      <View style={styles.socialIcons}>
+        <View>
+          <Text style={styles.socialTitle}>Connecting us:</Text>
+        </View>
+        <Ionicons name="logo-youtube" size={28} color="#FF0000" />
+        <Ionicons name="logo-facebook" size={28} color="#0866FF" />
+        <Ionicons name="logo-linkedin" size={28} color="#0A66C2" />
+        <Ionicons name="logo-whatsapp" size={28} color="#238547" />
+      </View>
       <View>
         <TouchableOpacity
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
             backgroundColor: COLORS.lightWhite,
             borderTopWidth: 0.5,
             borderColor: COLORS.gray,
-            paddingTop: 2,
+            paddingVertical: 5,
             columnGap: 5,
           }}
           onPress={() => {
-            Linking.openURL('https://prosohel.com');
+            Linking.openURL("https://prosohel.com");
           }}
         >
           {/* <Image
