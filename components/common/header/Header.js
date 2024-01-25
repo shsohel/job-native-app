@@ -1,11 +1,11 @@
 /** @format */
 
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Stack, useNavigation } from "expo-router";
-import { DrawerActions } from "@react-navigation/native";
-import { COLORS, icons, images } from "../../../constants";
-import ScreenHeaderBtn from "./ScreenHeaderBtn";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Stack, useNavigation } from 'expo-router';
+import { DrawerActions } from '@react-navigation/native';
+import { COLORS, icons, images } from '../../../constants';
+import ScreenHeaderBtn from './ScreenHeaderBtn';
 export default function Header() {
   const navigation = useNavigation();
   return (
@@ -26,9 +26,9 @@ export default function Header() {
           />
         ),
         headerRight: () => (
-          <ScreenHeaderBtn iconUrl={images.profile} dimension="80%" />
+          <ScreenHeaderBtn iconUrl={images.logo} dimension="80%" />
         ),
-        headerTitle: "",
+        headerTitle: '',
       }}
     />
   );

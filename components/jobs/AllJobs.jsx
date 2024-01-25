@@ -7,13 +7,16 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-import styles from './popularjobs.style';
+import styles from './alljobs.style';
 import { useRouter } from 'expo-router';
-import { COLORS, SIZES } from '../../../constants';
-import PopularJobCard from '../../common/cards/popular/PopularJobCard';
-import useFetch from '../../../hook/useFetch';
 
-const Popularjobs = () => {
+import { COLORS, SIZES } from '../../constants';
+import JobFooter from '../jobdetails/footer/Footer';
+import useFetch from '../../hook/useFetch';
+import AllJobCard from '../common/cards/job/AllJobCard';
+import Pagination from './job-pagination/Pagination';
+
+const AllJobs = () => {
   const router = useRouter();
   const [selectedJob, setSelectedJob] = useState();
   const { data, isLoading, error } = useFetch('search', {
@@ -28,12 +31,12 @@ const Popularjobs = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Jobs</Text>
+      {/* <View style={styles.header}>
+        <Text style={styles.headerTitle}>All Jobs</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View style={styles.cardsContainer}>
         {isLoading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
@@ -43,7 +46,7 @@ const Popularjobs = () => {
           <FlatList
             data={data}
             renderItem={({ item }) => (
-              <PopularJobCard
+              <AllJobCard
                 item={item}
                 selectedJob={selectedJob}
                 handleCardPress={handleCardPress}
@@ -51,12 +54,12 @@ const Popularjobs = () => {
             )}
             keyExtractor={(item) => item?.job_id ?? item}
             contentContainerStyle={{ columnGap: SIZES.medium }}
-            horizontal
           />
         )}
       </View>
+      <Pagination url={'https://careers.google.com/jobs/results'} />
     </View>
   );
 };
 
-export default Popularjobs;
+export default AllJobs;

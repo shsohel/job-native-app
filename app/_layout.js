@@ -28,6 +28,8 @@ const Layout = () => {
 
   return (
     <Drawer
+      initialRouteName="jobs"
+      backBehavior="history"
       onLayout={onLayoutRootView}
       drawerContent={(props) => {
         return <CustomDrawer {...props} />;

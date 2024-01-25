@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Stack, router, useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useState } from 'react';
 import {
   SafeAreaView,
@@ -18,7 +18,7 @@ import About from '../../components/jobdetails/about/About';
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 const JobDetails = () => {
   const params = useLocalSearchParams();
-  const router = useRouter();
+
   const { data, isLoading, error, refetch } = useFetch('job-details', {
     job_id: params.id,
   });
