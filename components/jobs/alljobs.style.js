@@ -3,12 +3,13 @@ import { COLORS, FONT, SIZES } from '../../constants';
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: SIZES.xLarge,
+    paddingBottom: SIZES.xLarge,
+    minHeight: SIZES.xLarge,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   headerTitle: {
     fontSize: SIZES.large,
@@ -21,8 +22,8 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
   },
   cardsContainer: {
-    paddingBottom: 100,
     paddingHorizontal: SIZES.xSmall,
+    marginBottom: SIZES.xLarge,
   },
 });
 

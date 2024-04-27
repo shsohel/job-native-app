@@ -10,23 +10,41 @@ import {
 import styles from './alljobs.style';
 import { useRouter } from 'expo-router';
 
-import { COLORS, SIZES } from '../../constants';
-import JobFooter from '../jobdetails/footer/Footer';
-import useFetch from '../../hook/useFetch';
-import AllJobCard from '../common/cards/job/AllJobCard';
-import Pagination from './job-pagination/Pagination';
+import { COLORS, SIZES } from "../../constants";
+import useFetch from "../../hook/useFetch";
+import AllJobCard from "../common/cards/job/AllJobCard";
+import Pagination from "./job-pagination/Pagination";
 
 const AllJobs = () => {
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [selectedJob, setSelectedJob] = useState();
-  const { data, isLoading, error } = useFetch('search', {
-    query: 'React',
-    num_pages: 1,
+  const { data, isLoading, error, refetch } = useFetch("job", {
+    page: currentPage,
+    limit: 10,
   });
 
   const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
+    router.push(`/job-details/${item.id}`);
+    setSelectedJob(item.id);
+  };
+
+  console.log(error);
+
+  const handleLoadMore = () => {
+    console.log("first");
+    setCurrentPage(currentPage + 1);
+    refetch();
+  };
+  const handleLoadPrevious = () => {
+    if (!isLoading && currentPage !== 1) {
+      console.log("prev");
+    }
+
+    // console.log("first");
+    // setCurrentPage(currentPage - 1);
+    // refetch();
   };
 
   return (
@@ -52,12 +70,16 @@ const AllJobs = () => {
                 handleCardPress={handleCardPress}
               />
             )}
-            keyExtractor={(item) => item?.job_id ?? item}
+            keyExtractor={(item) => item?.id ?? item}
+            onEndReached={handleLoadMore}
+            onStartReached={handleLoadPrevious}
+            onStartReachedThreshold={0.5}
+            // onRefresh={refetch()}
             contentContainerStyle={{ columnGap: SIZES.medium }}
           />
         )}
       </View>
-      <Pagination url={'https://careers.google.com/jobs/results'} />
+      <Pagination url={"https://careers.google.com/jobs/results"} />
     </View>
   );
 };

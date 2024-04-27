@@ -16,14 +16,11 @@ import useFetch from '../../../hook/useFetch';
 const Popularjobs = () => {
   const router = useRouter();
   const [selectedJob, setSelectedJob] = useState();
-  const { data, isLoading, error } = useFetch('search', {
-    query: 'React',
-    num_pages: 1,
-  });
+  const { data, isLoading, error } = useFetch("job", {});
 
   const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
+    router.push(`/job-details/${item.id}`);
+    setSelectedJob(item.id);
   };
 
   return (
@@ -49,7 +46,7 @@ const Popularjobs = () => {
                 handleCardPress={handleCardPress}
               />
             )}
-            keyExtractor={(item) => item?.job_id ?? item}
+            keyExtractor={(item) => item?.id ?? item}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
