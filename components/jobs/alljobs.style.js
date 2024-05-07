@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   cardsContainer: {
     paddingHorizontal: SIZES.xSmall,
     marginBottom: SIZES.xLarge,
+    minHeight: "500px",
   },
 });
 
